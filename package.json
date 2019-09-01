@@ -1,0 +1,40 @@
+{
+  "name": "@ldapjs/controls",
+  "version": "1.0.0",
+  "description": "LDAP control objects",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard | snazzy",
+    "lint:ci": "standard",
+    "test": "tap --no-cov",
+    "test:cov": "tap",
+    "test:cov:html": "tap --coverage-report=html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ldapjs/controls.git"
+  },
+  "keywords": [
+    "ldapjs"
+  ],
+  "author": "James Sumners",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ldapjs/controls/issues"
+  },
+  "homepage": "https://github.com/ldapjs/controls#readme",
+  "devDependencies": {
+    "husky": "^3.0.4",
+    "snazzy": "^8.0.0",
+    "standard": "^14.1.0",
+    "tap": "^14.6.1"
+  },
+  "dependencies": {
+    "asn1": "^0.2.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run test"
+    }
+  }
+}
