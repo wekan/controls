@@ -16,11 +16,14 @@ module.exports = {
       value: null
     }
 
+    /* istanbul ignore else */
     if (ber.length) {
       const end = ber.offset + ber.length
 
       type = ber.readString()
+      /* istanbul ignore else */
       if (ber.offset < end) {
+        /* istanbul ignore else */
         if (ber.peek() === Ber.Boolean) { opts.criticality = ber.readBoolean() }
       }
 
