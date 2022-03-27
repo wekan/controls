@@ -1,14 +1,15 @@
 {
   "name": "@ldapjs/controls",
-  "version": "1.0.0",
+  "version": "1.0.0-rc.1",
   "description": "LDAP control objects",
   "main": "index.js",
   "scripts": {
     "lint": "standard | snazzy",
     "lint:ci": "standard",
-    "test": "tap --no-cov",
-    "test:cov": "tap",
-    "test:cov:html": "tap --coverage-report=html"
+    "test": "tap --no-coverage-report -R terse",
+    "test:cov": "tap -R terse",
+    "test:cov:html": "tap -R terse --coverage-report=html",
+    "test:watch": "tap -w --no-coverage-report -R terse"
   },
   "repository": {
     "type": "git",
@@ -24,17 +25,16 @@
   },
   "homepage": "https://github.com/ldapjs/controls#readme",
   "devDependencies": {
-    "husky": "^3.0.4",
-    "snazzy": "^8.0.0",
-    "standard": "^14.1.0",
-    "tap": "^14.6.1"
+    "@fastify/pre-commit": "^2.0.2",
+    "snazzy": "9.0.0",
+    "standard": "16.0.4",
+    "tap": "16.0.1"
   },
   "dependencies": {
-    "asn1": "^0.2.4"
+    "@ldapjs/asn1": "^1.0.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint && npm run test"
-    }
-  }
+  "pre-commit": [
+    "lint",
+    "test"
+  ]
 }

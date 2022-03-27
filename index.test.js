@@ -1,8 +1,8 @@
 'use strict'
 
 const tap = require('tap')
-const { BerReader, BerWriter } = require('asn1')
-const controls = require('../')
+const { BerReader, BerWriter } = require('@ldapjs/asn1')
+const controls = require('.')
 
 tap.test('#getControl', t => {
   t.test('requires a BER to parse', async t => {
@@ -16,7 +16,7 @@ tap.test('#getControl', t => {
 
   t.test('returns null for empty BER', async t => {
     const result = controls.getControl(new BerReader(Buffer.alloc(0)))
-    t.is(result, null)
+    t.equal(result, null)
   })
 
   t.test('parses a BER (control)', async t => {

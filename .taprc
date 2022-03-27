@@ -1,4 +1,0 @@
-esm: false
-
-files:
-  - 'test/**/*.test.js'

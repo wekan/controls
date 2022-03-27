@@ -1,6 +1,6 @@
 'use strict'
 
-const { Ber } = require('asn1')
+const { Ber } = require('@ldapjs/asn1')
 const Control = require('./lib/control')
 
 module.exports = {

@@ -1,0 +1,5 @@
+check-coverage: false
+
+files:
+  - 'index.test.js'
+  - 'lib/**/*.test.js'
