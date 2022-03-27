@@ -2,6 +2,8 @@
 *.tar.*
 *.tgz
 
+.nova/
+
 # Lock files
 pnpm-lock.yaml
 shrinkwrap.yaml
