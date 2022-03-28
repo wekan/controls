@@ -110,7 +110,17 @@ tap.test('#getControl', t => {
     t.equal(psc.value.changeTypes, 15)
     t.equal(psc.value.changesOnly, true)
     t.equal(psc.value.returnECs, true)
-    t.end()
+  })
+
+  t.test('returns a ServerSideSortingRequestControl', async t => {
+    const sssc = new controls.ServerSideSortingRequestControl()
+    const ber = new BerWriter()
+    sssc.toBer(ber)
+
+    const c = controls.getControl(new BerReader(ber.buffer))
+    t.ok(c)
+    t.equal(c.type, controls.ServerSideSortingRequestControl.OID)
+    t.equal(c.value.length, 0)
   })
 
   t.end()

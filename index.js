@@ -5,7 +5,8 @@ const Control = require('./lib/control')
 const {
   EntryChangeNotificationControl,
   PagedResultsControl,
-  PersistentSearchControl
+  PersistentSearchControl,
+  ServerSideSortingRequestControl
 } = require('./lib/controls')
 
 module.exports = {
@@ -52,9 +53,11 @@ module.exports = {
         break
       }
 
-      // case ServerSideSortingRequestControl.OID:
-      //   control = new ServerSideSortingRequestControl(opts)
-      //   break
+      case ServerSideSortingRequestControl.OID: {
+        control = new ServerSideSortingRequestControl(opts)
+        break
+      }
+
       // case ServerSideSortingResponseControl.OID:
       //   control = new ServerSideSortingResponseControl(opts)
       //   break
@@ -72,7 +75,7 @@ module.exports = {
   Control,
   EntryChangeNotificationControl: EntryChangeNotificationControl,
   PagedResultsControl: PagedResultsControl,
-  PersistentSearchControl: PersistentSearchControl
-  // ServerSideSortingRequestControl: ServerSideSortingRequestControl,
+  PersistentSearchControl: PersistentSearchControl,
+  ServerSideSortingRequestControl: ServerSideSortingRequestControl
   // ServerSideSortingResponseControl: ServerSideSortingResponseControl
 }
