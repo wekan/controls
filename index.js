@@ -6,7 +6,8 @@ const {
   EntryChangeNotificationControl,
   PagedResultsControl,
   PersistentSearchControl,
-  ServerSideSortingRequestControl
+  ServerSideSortingRequestControl,
+  ServerSideSortingResponseControl
 } = require('./lib/controls')
 
 module.exports = {
@@ -58,9 +59,10 @@ module.exports = {
         break
       }
 
-      // case ServerSideSortingResponseControl.OID:
-      //   control = new ServerSideSortingResponseControl(opts)
-      //   break
+      case ServerSideSortingResponseControl.OID: {
+        control = new ServerSideSortingResponseControl(opts)
+        break
+      }
 
       default: {
         opts.type = type
@@ -76,6 +78,6 @@ module.exports = {
   EntryChangeNotificationControl: EntryChangeNotificationControl,
   PagedResultsControl: PagedResultsControl,
   PersistentSearchControl: PersistentSearchControl,
-  ServerSideSortingRequestControl: ServerSideSortingRequestControl
-  // ServerSideSortingResponseControl: ServerSideSortingResponseControl
+  ServerSideSortingRequestControl: ServerSideSortingRequestControl,
+  ServerSideSortingResponseControl: ServerSideSortingResponseControl
 }

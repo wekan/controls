@@ -1,6 +1,6 @@
 {
   "name": "@ldapjs/controls",
-  "version": "1.0.0-rc.4",
+  "version": "1.0.0-rc.5",
   "description": "LDAP control objects",
   "main": "index.js",
   "scripts": {
@@ -34,7 +34,8 @@
     "tap": "16.0.1"
   },
   "dependencies": {
-    "@ldapjs/asn1": "^1.0.0"
+    "@ldapjs/asn1": "^1.0.0",
+    "@ldapjs/codes": "^1.0.0"
   },
   "pre-commit": [
     "lint",

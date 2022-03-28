@@ -123,5 +123,18 @@ tap.test('#getControl', t => {
     t.equal(c.value.length, 0)
   })
 
+  t.test('returns a ServerSideSortingResponseControl', async t => {
+    const sssc = new controls.ServerSideSortingResponseControl()
+    const ber = new BerWriter()
+    sssc.toBer(ber)
+
+    const c = controls.getControl(new BerReader(ber.buffer))
+    t.ok(c)
+    t.equal(c.type, controls.ServerSideSortingResponseControl.OID)
+    t.equal(c.criticality, false)
+    t.notOk(c.value.result)
+    t.notOk(c.value.failedAttribute)
+  })
+
   t.end()
 })
