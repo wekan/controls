@@ -2,7 +2,10 @@
 
 const { Ber } = require('@ldapjs/asn1')
 const Control = require('./lib/control')
-const { PersistentSearchControl } = require('./lib/controls')
+const {
+  EntryChangeNotificationControl,
+  PersistentSearchControl
+} = require('./lib/controls')
 
 module.exports = {
 
@@ -33,14 +36,16 @@ module.exports = {
 
     let control
     switch (type) {
+      case EntryChangeNotificationControl.OID: {
+        control = new EntryChangeNotificationControl(opts)
+        break
+      }
+
       case PersistentSearchControl.OID: {
         control = new PersistentSearchControl(opts)
         break
       }
 
-      // case EntryChangeNotificationControl.OID:
-      //   control = new EntryChangeNotificationControl(opts)
-      //   break
       // case PagedResultsControl.OID:
       //   control = new PagedResultsControl(opts)
       //   break
@@ -62,7 +67,7 @@ module.exports = {
   },
 
   Control,
-  // EntryChangeNotificationControl: EntryChangeNotificationControl,
+  EntryChangeNotificationControl: EntryChangeNotificationControl,
   // PagedResultsControl: PagedResultsControl,
   PersistentSearchControl: PersistentSearchControl
   // ServerSideSortingRequestControl: ServerSideSortingRequestControl,

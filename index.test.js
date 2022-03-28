@@ -51,6 +51,29 @@ tap.test('#getControl', t => {
     t.end()
   })
 
+  t.test('returns a EntryChangeNotificationControl', async t => {
+    const ecnc = new controls.EntryChangeNotificationControl({
+      type: '2.16.840.1.113730.3.4.7',
+      criticality: true,
+      value: {
+        changeType: 8,
+        previousDN: 'cn=foobarbazcar',
+        changeNumber: 123456789
+      }
+    })
+
+    const ber = new BerWriter()
+    ecnc.toBer(ber)
+
+    const c = controls.getControl(new BerReader(ber.buffer))
+    t.ok(c)
+    t.equal(c.type, '2.16.840.1.113730.3.4.7')
+    t.ok(c.criticality)
+    t.equal(c.value.changeType, 8)
+    t.equal(c.value.previousDN, 'cn=foobarbazcar')
+    t.equal(c.value.changeNumber, 123456789)
+  })
+
   t.test('returns a PersistentSearchControl', async t => {
     const buf = Buffer.from([
       0x30, 0x26, 0x04, 0x17, 0x32, 0x2e, 0x31, 0x36, 0x2e, 0x38, 0x34, 0x30,
