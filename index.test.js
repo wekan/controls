@@ -53,7 +53,7 @@ tap.test('#getControl', t => {
 
   t.test('returns a EntryChangeNotificationControl', async t => {
     const ecnc = new controls.EntryChangeNotificationControl({
-      type: '2.16.840.1.113730.3.4.7',
+      type: controls.EntryChangeNotificationControl.OID,
       criticality: true,
       value: {
         changeType: 8,
@@ -67,11 +67,32 @@ tap.test('#getControl', t => {
 
     const c = controls.getControl(new BerReader(ber.buffer))
     t.ok(c)
-    t.equal(c.type, '2.16.840.1.113730.3.4.7')
+    t.equal(c.type, controls.EntryChangeNotificationControl.OID)
     t.ok(c.criticality)
     t.equal(c.value.changeType, 8)
     t.equal(c.value.previousDN, 'cn=foobarbazcar')
     t.equal(c.value.changeNumber, 123456789)
+  })
+
+  t.test('returns a PagedResultsControl', async t => {
+    const prc = new controls.PagedResultsControl({
+      type: controls.PagedResultsControl.OID,
+      criticality: true,
+      value: {
+        size: 20,
+        cookie: Buffer.alloc(0)
+      }
+    })
+
+    const ber = new BerWriter()
+    prc.toBer(ber)
+
+    const c = controls.getControl(new BerReader(ber.buffer))
+    t.ok(c)
+    t.equal(c.type, controls.PagedResultsControl.OID)
+    t.ok(c.criticality)
+    t.equal(c.value.size, 20)
+    t.equal(Buffer.compare(c.value.cookie, Buffer.alloc(0)), 0)
   })
 
   t.test('returns a PersistentSearchControl', async t => {
