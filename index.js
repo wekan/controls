@@ -87,11 +87,11 @@ module.exports = {
   },
 
   Control,
-  EntryChangeNotificationControl: EntryChangeNotificationControl,
-  PagedResultsControl: PagedResultsControl,
-  PersistentSearchControl: PersistentSearchControl,
-  ServerSideSortingRequestControl: ServerSideSortingRequestControl,
-  ServerSideSortingResponseControl: ServerSideSortingResponseControl,
-  VirtualListViewRequestControl: VirtualListViewRequestControl,
-  VirtualListViewResponseControl: VirtualListViewResponseControl
+  EntryChangeNotificationControl,
+  PagedResultsControl,
+  PersistentSearchControl,
+  ServerSideSortingRequestControl,
+  ServerSideSortingResponseControl,
+  VirtualListViewRequestControl,
+  VirtualListViewResponseControl
 }
