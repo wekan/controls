@@ -7,7 +7,9 @@ const {
   PagedResultsControl,
   PersistentSearchControl,
   ServerSideSortingRequestControl,
-  ServerSideSortingResponseControl
+  ServerSideSortingResponseControl,
+  VirtualListViewRequestControl,
+  VirtualListViewResponseControl
 } = require('./lib/controls')
 
 module.exports = {
@@ -64,6 +66,16 @@ module.exports = {
         break
       }
 
+      case VirtualListViewRequestControl.OID: {
+        control = new VirtualListViewRequestControl(opts)
+        break
+      }
+
+      case VirtualListViewResponseControl.OID: {
+        control = new VirtualListViewResponseControl(opts)
+        break
+      }
+
       default: {
         opts.type = type
         control = new Control(opts)
@@ -79,5 +91,7 @@ module.exports = {
   PagedResultsControl: PagedResultsControl,
   PersistentSearchControl: PersistentSearchControl,
   ServerSideSortingRequestControl: ServerSideSortingRequestControl,
-  ServerSideSortingResponseControl: ServerSideSortingResponseControl
+  ServerSideSortingResponseControl: ServerSideSortingResponseControl,
+  VirtualListViewRequestControl: VirtualListViewRequestControl,
+  VirtualListViewResponseControl: VirtualListViewResponseControl
 }
