@@ -1,16 +1,15 @@
 'use strict'
 
 const { Ber } = require('@ldapjs/asn1')
+
 const Control = require('./lib/control')
-const {
-  EntryChangeNotificationControl,
-  PagedResultsControl,
-  PersistentSearchControl,
-  ServerSideSortingRequestControl,
-  ServerSideSortingResponseControl,
-  VirtualListViewRequestControl,
-  VirtualListViewResponseControl
-} = require('./lib/controls')
+const EntryChangeNotificationControl = require('./lib/controls/entry-change-notification-control')
+const PagedResultsControl = require('./lib/controls/paged-results-control')
+const PersistentSearchControl = require('./lib/controls/persistent-search-control')
+const ServerSideSortingRequestControl = require('./lib/controls/server-side-sorting-request-control')
+const ServerSideSortingResponseControl = require('./lib/controls/server-side-sorting-response-control')
+const VirtualListViewRequestControl = require('./lib/controls/virtual-list-view-request-control')
+const VirtualListViewResponseControl = require('./lib/controls/virtual-list-view-response-control')
 
 module.exports = {
 
