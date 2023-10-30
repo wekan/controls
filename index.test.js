@@ -95,6 +95,27 @@ tap.test('#getControl', t => {
     t.equal(Buffer.compare(c.value.cookie, Buffer.alloc(0)), 0)
   })
 
+  t.test('returns a PasswordPolicyControl', async t => {
+    const ppc = new controls.PasswordPolicyControl({
+      type: controls.PasswordPolicyControl.OID,
+      criticality: true,
+      value: {
+        error: 1,
+        timeBeforeExpiration: 2
+      }
+    })
+
+    const ber = new BerWriter()
+    ppc.toBer(ber)
+
+    const c = controls.getControl(new BerReader(ber.buffer))
+    t.ok(c)
+    t.equal(c.type, controls.PasswordPolicyControl.OID)
+    t.ok(c.criticality)
+    t.equal(c.value.error, 1)
+    t.equal(c.value.timeBeforeExpiration, 2)
+  })
+
   t.test('returns a PersistentSearchControl', async t => {
     const buf = Buffer.from([
       0x30, 0x26, 0x04, 0x17, 0x32, 0x2e, 0x31, 0x36, 0x2e, 0x38, 0x34, 0x30,
