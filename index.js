@@ -5,6 +5,7 @@ const { Ber } = require('@ldapjs/asn1')
 const Control = require('./lib/control')
 const EntryChangeNotificationControl = require('./lib/controls/entry-change-notification-control')
 const PagedResultsControl = require('./lib/controls/paged-results-control')
+const PasswordPolicyControl = require('./lib/controls/password-policy-control')
 const PersistentSearchControl = require('./lib/controls/persistent-search-control')
 const ServerSideSortingRequestControl = require('./lib/controls/server-side-sorting-request-control')
 const ServerSideSortingResponseControl = require('./lib/controls/server-side-sorting-response-control')
@@ -50,6 +51,11 @@ module.exports = {
         break
       }
 
+      case PasswordPolicyControl.OID: {
+        control = new PasswordPolicyControl(opts)
+        break
+      }
+
       case PersistentSearchControl.OID: {
         control = new PersistentSearchControl(opts)
         break
@@ -88,6 +94,7 @@ module.exports = {
   Control,
   EntryChangeNotificationControl,
   PagedResultsControl,
+  PasswordPolicyControl,
   PersistentSearchControl,
   ServerSideSortingRequestControl,
   ServerSideSortingResponseControl,
