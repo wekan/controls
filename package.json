@@ -1,6 +1,6 @@
 {
-  "name": "@ldapjs/controls",
-  "version": "2.1.0",
+  "name": "@wekanteam/controls",
+  "version": "2.1.1",
   "description": "LDAP control objects",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/ldapjs/controls.git"
+    "url": "git+ssh://git@github.com/wekan/controls.git"
   },
   "keywords": [
     "ldapjs"
@@ -21,25 +21,11 @@
   "author": "James Sumners",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ldapjs/controls/issues"
+    "url": "https://github.com/wekan/controls/issues"
   },
-  "homepage": "https://github.com/ldapjs/controls#readme",
-  "devDependencies": {
-    "@fastify/pre-commit": "^2.0.2",
-    "eslint": "^8.34.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-n": "^15.6.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.1.1",
-    "tap": "^16.3.4"
-  },
+  "homepage": "https://github.com/wekan/controls#readme",
   "dependencies": {
-    "@ldapjs/asn1": "^1.2.0",
-    "@ldapjs/protocol": "^1.2.1"
-  },
-  "pre-commit": [
-    "lint",
-    "test"
-  ]
+    "@wekanteam/asn1": "github:wekan/asn1",
+    "@wekanteam/protocol": "github:wekan/protocol"
+  }
 }
